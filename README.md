@@ -23,6 +23,12 @@ block and animates changes to any snapshot state objects (such as those created 
 written to inside the block. Use the `rememberAutoTransition()` Composable function to get an
 instance of `AutoTransition`.
 
+`withAnimation` uses Compose's snapshot system to determine what state you changed in the block and
+then launches a coroutine to animate it. It does this by running the block in a snapshot, then
+disposing the snapshot without applying it. Since the snapshot is never applied, it's important to
+not perform side effects in the `withAnimation` block, or to write to any states not backed by
+snapshot state.
+
 ## Demo
 
 https://user-images.githubusercontent.com/101754/178158724-e67477be-4569-48c9-9955-cf5d01f1ccd9.mp4
