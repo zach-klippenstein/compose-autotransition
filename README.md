@@ -23,6 +23,10 @@ block and animates changes to any snapshot state objects (such as those created 
 written to inside the block. Use the `rememberAutoTransition()` Composable function to get an
 instance of `AutoTransition`.
 
+## Demo
+
+https://user-images.githubusercontent.com/101754/178158724-e67477be-4569-48c9-9955-cf5d01f1ccd9.mp4
+
 ## Customization
 
 By default, `withTransition` can animate changes to any `MutableState` objects holding values of
