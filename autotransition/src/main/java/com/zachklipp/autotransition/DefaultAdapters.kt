@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 
-internal val DefaultConverters = listOf<AutoTransitionConverterRegistry>(
+internal val DefaultStateObjectAdapters = listOf<StateObjectAdapterRegistry>(
     MutableStateAutoTransitionConverter(Float::class, Float.VectorConverter),
     MutableStateAutoTransitionConverter(Int::class, Int.VectorConverter),
     MutableStateAutoTransitionConverter(Rect::class, Rect.VectorConverter),
@@ -22,9 +22,9 @@ internal val DefaultConverters = listOf<AutoTransitionConverterRegistry>(
     MutableStateAutoTransitionConverter(IntOffset::class, IntOffset.VectorConverter),
     MutableStateAutoTransitionConverter(Size::class, Size.VectorConverter),
     MutableStateAutoTransitionConverter(IntSize::class, IntSize.VectorConverter),
-    object : MutableStateAutoTransitionConverter<Color>(Color::class) {
-        override fun vectorConverterForTyped(value: Color): TwoWayConverter<Color, *> {
-            return Color.VectorConverter(value.colorSpace)
+    object : MutableStateAdapter<Color>(Color::class) {
+        override fun vectorConverterForTyped(initialValue: Color): TwoWayConverter<Color, *> {
+            return Color.VectorConverter(initialValue.colorSpace)
         }
     }
 )
